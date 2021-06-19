@@ -184,7 +184,6 @@ namespace PlanValidation1
                         else if (line.Contains(":between-condition"))
                         {
                             state = State.BetweenConditions;
-                            //TODO done conditions?
                         }
                     }
                     else if (state == State.Conditions)
@@ -237,7 +236,7 @@ namespace PlanValidation1
                                 {
                                     //If the rule is empty as in has no substasks than this is the last thing it will go through.
                                     state = State.InMethod;
-                                    lastInConditions = true; //TODO should this be true in betwene conditions. We cant have empty ssubtask with between conditions. 
+                                    lastInConditions = true; 
                                 }
                             }
                             catch (Exception e)
@@ -378,7 +377,7 @@ namespace PlanValidation1
                             //The question mark does that if vars is null it will jsut pass null inside the method. 
                             condition = GetActionCondition(line, curActionType.Vars?.Select(x => x.Name).ToList(), ref curActionType.Constants, out isPos);
 
-                            //If the variable does not have any parameters than it ccannot have any conditions either. TODO Check?
+                            //If the variable does not have any parameters than it ccannot have any conditions either. 
                             if (condition != null)
                             {
                                 if (isPos) curActionType.PosPreConditions.Add(condition);
