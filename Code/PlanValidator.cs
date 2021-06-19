@@ -45,8 +45,7 @@ namespace PlanValidation1
                 bool valid = atomTimelines.CreateSupportsAndDeleteActions(ref a, i + 1);
                 if (!valid)
                 {
-                    //Console.WriteLine("This action {0} is invalid.", a);
-                    //TODO should it remain in plan??
+                    //Optional: Could be removed form plan entirely. 
                 }
                 Task t = new Task(a.ActionInstance, array, taskType, i, i, a.DeleteActions, a.Supports);
                 t.Iteration = -1;
@@ -368,8 +367,7 @@ namespace PlanValidation1
                         if (positive) return false;
                         //There is no condition like this in the timeline, so this precondition cannot be satisfied. 
 
-                    }
-                    //TODO check if the int in this tuple is correct. 
+                    }                        
                     //actions are ordered from 1
                     //Slightly redundant but for better understanding. +1 is because actions are ordered form 1 and not 0. -1 is because we can have a task with
                     //precondiiton on position x for atom t and action that removes t on position x. Then the atom has -x in timeline but it is still valid. 
